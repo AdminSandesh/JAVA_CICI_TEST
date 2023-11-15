@@ -1,0 +1,78 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+
+    
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+trigger:
+- master
+pool:
+  vmImage: windows-latest
+steps:
+- checkout: self
+- task: CmdLine@2
+  inputs:
+        script: dir /b
+# - task: Maven@3
+#   inputs:
+#     mavenPomFile: '$(Build.SourcesDirectory)/SpurCumber/pom.xml'
+#     mavenOptions: '-Xmx3072m'
+#     javaHomeOption: 'JDKVersion'
+#     jdkVersionOption: '1.8'
+#     jdkArchitectureOption: 'x64'
+#     publishJUnitResults: true
+#     testResultsFiles: '**/surefire-reports/TEST-*.xml'
+#     goals: mvn package -Dmaven.test.skip=true
+#   continueOnError: true
+# - script: mvn test -Dcucumber.filter.tags="@demo"
+#   workingDirectory: $(Build.SourcesDirectory)/SpurCumber/
+#   displayName: 'Selenium Test'
+#   continueOnError: true
+
+
+
+# - task: CmdLine@2
+#   inputs:
+#     script: |
+#       dir /b
+#       echo "hello" >log.txt
+    
+
+# # - task: SendEmail@1  
+# #   inputs:
+# #     To: 'uddhav.raut@spurqlabs.com'
+# #     From: '
+# #     Subject: 'Demo'
+# #     Body: build is completed..!
+# #     BodyAsHtml: true
+# #     AddAttachment: false
+# #     SmtpServer: 'smtp.office365.com'
+# #     SmtpUsername: 'uraut12@outlook.com'
+# #     SmtpPassword: 'Quality@2022#'
+# #     Attachment: $(Build.SourcesDirectory)\pom.xml
+
+# - task: SendEmail@1
+#   inputs:
+#     To: 'uddhav.raut@spurqlabs.com'
+#     From: 'uraut12@outlook.com'
+#     Subject: 'Azure build pipeline is completed.'
+#     Body: 'build is completed.'
+#     BodyAsHtml: false
+#     AddAttachment: true
+#     Attachment: $(Build.SourcesDirectory)\pom.xml
+#     SmtpServer: 'smtp.office365.com'
+#     SmtpUsername: 'uraut12@outlook.com'
+#     SmtpPassword: 'Quality@2022#'
+
+- bash: |
+    git push --prune https://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@github.com/SpurQLab/SpurCumber \
+        +refs/remotes/origin/master:refs/heads/master +refs/tags/*:refs/tags/*
+  displayName: 'Copy to Github'
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+    
+    

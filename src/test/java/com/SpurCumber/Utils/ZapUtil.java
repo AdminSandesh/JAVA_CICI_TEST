@@ -197,7 +197,8 @@ public class ZapUtil {
 
     }
 
-    public static void WriteHtmlReport(String reportFileName) {
+    @SuppressWarnings("deprecation")
+	public static void WriteHtmlReport(String reportFileName) {
 
         try (FileOutputStream stream = new FileOutputStream(reportFileName)) {
             stream.write(api.core.htmlreport());

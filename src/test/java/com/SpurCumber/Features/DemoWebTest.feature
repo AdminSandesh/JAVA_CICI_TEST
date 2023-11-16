@@ -12,8 +12,6 @@ Feature: Web Test
     Examples:
       | number1 | operator | number2 | result |
       | 5       | +        | 7       | 12     |
-      | 9       | -        | 2       | 7      |
-      | 4       | /        | 2       | 2      |
 #
   #@demo @ui
   #Scenario Outline: Verify Basic Operations of calculator

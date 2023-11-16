@@ -11,5 +11,5 @@ public class TestContext {
     public static WebDriverWait wait;
     public static String APIURL;
     public static AndroidDriver<AndroidElement> androidDriver;
-    public static WindowsDriver winAppDriver;
+    public static WindowsDriver<?> winAppDriver;
 }

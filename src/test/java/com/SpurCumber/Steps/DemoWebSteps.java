@@ -33,6 +33,6 @@ public class DemoWebSteps extends TestContext {
 
     @Then("I see the result is {string}")
     public void iSeeTheResultIsResult(String Expected_result) {
-        Assert.assertEquals(demoWebPage.GetResult(), Expected_result);
+        Assert.assertEquals(demoWebPage.GetResult(), "Failing Intens");
     }
 }
